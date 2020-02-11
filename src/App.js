@@ -7,7 +7,13 @@ class App extends React.Component{
     nome : ""
   }
 
-  modificarNome = (event) => {
+  constructor(){
+    super()
+
+    this.modificarNome = this.modificarNome.bind(this)
+  }
+
+  modificarNome(event){
       let nome = event.target.value;
       this.setState({
         nome: nome
