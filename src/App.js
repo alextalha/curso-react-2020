@@ -23,7 +23,7 @@ import  React  from 'react';
 
     return ( 
       <React.Fragment>
-        <input type="text" value={props.nome} onChange={modificarNome} />
+        <input className="text-centralizado" type="text" value={props.nome} onChange={modificarNome} />
 
         <h1>Hello {props.nome}</h1>
         <h1>Idade {props.idade}</h1>
