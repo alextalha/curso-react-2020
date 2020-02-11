@@ -30,8 +30,12 @@ class App extends React.Component{
     )
   }
 
-    render(){
+  componentDidMount(){
+    console.log('Executou o componentDidMount')
+  }
 
+    render(){
+      console.log("Executou o Render")
       const MeuComboBox = () => this.criarCombo()
     return ( 
       <React.Fragment>
