@@ -28,8 +28,6 @@ class App extends React.Component{
         {ComboOptions}
       </select>
     )
-
-
   }
 
     render(){
@@ -39,6 +37,8 @@ class App extends React.Component{
       <React.Fragment>
         <input type="text" value={this.state.nome} onChange={this.modificarNome} />
         <h1>Hello {this.state.nome}</h1>
+        <h1>Hello {this.props.nome}</h1>
+        <h1>Idade {this.props.idade}</h1>
         <MeuComboBox />
       </React.Fragment>
     )
