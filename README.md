@@ -1,9 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto Base com React para ter no projeto 
+yarn add bootswatch
 
-## Available Scripts
+## Scrips para rodar
 
-In the project directory, you can run:
-
+yarn add bootswatch
+<!-- 
 ### `yarn start`
 
 Runs the app in the development mode.<br />
@@ -66,4 +67,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# curso-react-2020
+# curso-react-2020 -->
