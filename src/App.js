@@ -1,11 +1,12 @@
 import  React, { Fragment }  from 'react';
 import NavBar from "./components/navbar"
-import Home from "./views/home"
+import Rotas from './rotas'
+
  function App(props){
   return(
     <Fragment>
       <NavBar />
-    <Home />
+      <Rotas />
 </Fragment>
   )
 }
