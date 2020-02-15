@@ -7,7 +7,7 @@ import Rotas from './rotas'
     <Fragment>
       <NavBar />
       <Rotas />
-</Fragment>
+    </Fragment>
   )
 }
 
