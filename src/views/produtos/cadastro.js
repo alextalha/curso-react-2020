@@ -1,23 +1,48 @@
 import React from 'react'
 
+
+import ProdutoService from "../../app/produtoService"
+
 const estadoInicial = {
     nome : "",
     sku : "",
     fornecedor: "",
     descricao: "",
     preco: 0,
+    sucesso:false
 
 }
 
 class CadastroProduto extends React.Component {
  
-  
-
     state = estadoInicial
 
+    constructor(){
+        super()
+        this.service = new ProdutoService()
+      
+
+    }
+
+    onSubmit = (event) =>{
+
+        const produto = {
+            nome : this.state.nome,
+            sku: this.state.sku,
+            descricao : this.state.descricao,
+            preco: this.state.preco,
+            fornecedor:this.state.fornecedor
+            }
+
+            this.service.salvar(produto)
+            this.onClear()
+           
+
+        }
+    
+
     onClick = (event) => {
-        
-       console.log(this.state)
+      
     }
 
     onChange = (event) =>{
@@ -25,10 +50,13 @@ class CadastroProduto extends React.Component {
         let valor = event.target.value;
 
        this.setState({ [nomeCampo] : valor })
+       this.setState({ sucesso : false })
     }
 
     onClear = (event) => {
         this.setState(estadoInicial)
+        this.setState({ sucesso : true })
+        console.log('sucesso', this.state.sucesso)
 
     }
 
@@ -39,7 +67,17 @@ class CadastroProduto extends React.Component {
              <div className="card-header">Cadastro de Produto</div>
             <div className="card-body">
 
+
                 <div className="row">
+                    { this.state.sucesso ? 
+                        <div className="col-md-12">
+                            <div className="alert alert-dismissible alert-success">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Parabéns!</strong> Cadastro Realizado com sucesso.
+                            </div>
+                        </div>
+                        : ""
+                    }
                     <div className="col-md-6">
                         <div className="form-group">
                             <label> Nome:*</label>
@@ -82,7 +120,7 @@ class CadastroProduto extends React.Component {
 
                 <div className="row">
                     <div className="col-md-1">
-                        <button className="btn btn-success"  onClick={ this.onClick }> Salvar </button>
+                        <button className="btn btn-success"  onClick={ this.onSubmit }> Salvar </button>
                     </div>
                     <div className="col-md-1">
                         <button className="btn btn-danger"  onClick={ this.onClear }> Limpar </button>
