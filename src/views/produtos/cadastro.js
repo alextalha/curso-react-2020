@@ -1,20 +1,23 @@
 import React from 'react'
 
+const estadoInicial = {
+    nome : "",
+    sku : "",
+    fornecedor: "",
+    descricao: "",
+    preco: 0,
+
+}
 
 class CadastroProduto extends React.Component {
  
   
-    state = {
-        nome : "",
-        sku : "",
-        fornecedor: "",
-        descricao: "",
-        preco: 0,
 
-    }
+    state = estadoInicial
 
-    onSubmit = (event) => {
-      console.log(this.state)
+    onClick = (event) => {
+        
+       console.log(this.state)
     }
 
     onChange = (event) =>{
@@ -22,6 +25,11 @@ class CadastroProduto extends React.Component {
         let valor = event.target.value;
 
        this.setState({ [nomeCampo] : valor })
+    }
+
+    onClear = (event) => {
+        this.setState(estadoInicial)
+
     }
 
 
@@ -74,10 +82,10 @@ class CadastroProduto extends React.Component {
 
                 <div className="row">
                     <div className="col-md-1">
-                        <button className="btn btn-success"  onClick={ this.onSubmit }> Salvar </button>
+                        <button className="btn btn-success"  onClick={ this.onClick }> Salvar </button>
                     </div>
                     <div className="col-md-1">
-                        <button className="btn btn-danger"> Limpar </button>
+                        <button className="btn btn-danger"  onClick={ this.onClear }> Limpar </button>
                     </div>
                 </div>
             </div>
