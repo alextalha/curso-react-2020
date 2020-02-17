@@ -9,7 +9,8 @@ const estadoInicial = {
     fornecedor: "",
     descricao: "",
     preco: 0,
-    sucesso:false
+    sucesso:false,
+    validar:false
 
 }
 
@@ -34,11 +35,17 @@ class CadastroProduto extends React.Component {
             fornecedor:this.state.fornecedor
             }
 
+        
+        try {
             this.service.salvar(produto)
             this.onClear()
-           
-
+            this.setState({ sucesso : true })
+            
+        } catch (error) {
+            
         }
+
+    }
     
 
     onClick = (event) => {
@@ -46,6 +53,18 @@ class CadastroProduto extends React.Component {
     }
 
     onChange = (event) =>{
+
+        const produto = {
+            nome : this.state.nome,
+            sku: this.state.sku,
+            descricao : this.state.descricao,
+            preco: this.state.preco,
+            fornecedor:this.state.fornecedor
+            }
+
+
+        this.service.validar(produto)
+    
         let nomeCampo = event.target.name;
         let valor = event.target.value;
 
@@ -55,9 +74,6 @@ class CadastroProduto extends React.Component {
 
     onClear = (event) => {
         this.setState(estadoInicial)
-        this.setState({ sucesso : true })
-        console.log('sucesso', this.state.sucesso)
-
     }
 
 
@@ -72,7 +88,7 @@ class CadastroProduto extends React.Component {
                     { this.state.sucesso ? 
                         <div className="col-md-12">
                             <div className="alert alert-dismissible alert-success">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <button type="button" className="close" data-dismiss="alert">&times;</button>
                                 <strong>Parabéns!</strong> Cadastro Realizado com sucesso.
                             </div>
                         </div>
@@ -120,13 +136,13 @@ class CadastroProduto extends React.Component {
 
                 <div className="row">
                     <div className="col-md-1">
-                        <button className="btn btn-success"  onClick={ this.onSubmit }> Salvar </button>
-                    </div>
-                    <div className="col-md-1">
-                        <button className="btn btn-danger"  onClick={ this.onClear }> Limpar </button>
+                        <div className="btn-group" role="group" aria-label="Basic example">
+                            <button className="btn btn-success"  onClick={ this.onSubmit }> Salvar </button>
+                            <button className="btn btn-danger"  onClick={ this.onClear }> Limpar </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
         )
     }
