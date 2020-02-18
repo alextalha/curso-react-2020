@@ -9,7 +9,7 @@ function Home(){
         <p className="lead">Este é seu sistema, utilize a barra de navegação para acessar as páginas.</p>
         <hr className="my-4" />
         <p className="lead">
-            <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a className="btn btn-primary btn-lg" href="/" role="button">Learn more</a>
         </p>
     </div>
     </>

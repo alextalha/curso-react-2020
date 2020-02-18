@@ -1,21 +1,20 @@
 
 const PRODUTO = '_PRODUTOS';
 
-function ErroValidacao(errors){
+export function ErroValidacao(errors){
     this.erros = errors;
 
 }
 
 export default class ProdutoService {
 
-
-
-
     validar = (produtos) => {
 
+     
        const erros  = []
 
-       if(!produtos.name){
+       console.log(produtos)
+       if(!produtos.nome){
            erros.push("Campo Nome obrigatório")
        }
        if(!produtos.sku){
@@ -27,18 +26,16 @@ export default class ProdutoService {
         if(!produtos.fornecedor){
             erros.push("Campo Fornecedor obrigatório")
         }
-        if(!produtos.fornecedor){
-            erros.push("Campo Nome obrigatório")
-        }
+
+
        if(erros.length > 0 ){
-           throw ErroValidacao(erros)
+           throw new ErroValidacao(erros)
        }
     }
 
-
     salvar = (produto) =>{
 
-        this.validar(produtos)
+        this.validar(produto)
 
         let produtos = localStorage.getItem(PRODUTO)
         

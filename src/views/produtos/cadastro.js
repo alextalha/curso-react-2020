@@ -10,7 +10,7 @@ const estadoInicial = {
     descricao: "",
     preco: 0,
     sucesso:false,
-    validar:false
+    errors:[]
 
 }
 
@@ -32,17 +32,21 @@ class CadastroProduto extends React.Component {
             sku: this.state.sku,
             descricao : this.state.descricao,
             preco: this.state.preco,
-            fornecedor:this.state.fornecedor
+            fornecedor:this.state.fornecedor,
+
             }
 
         
         try {
+
             this.service.salvar(produto)
             this.onClear()
             this.setState({ sucesso : true })
             
-        } catch (error) {
-            
+        } catch (erro) {
+                const errors = erro.erros
+                this.setState({ errors })
+
         }
 
     }
@@ -54,6 +58,8 @@ class CadastroProduto extends React.Component {
 
     onChange = (event) =>{
 
+
+        console.log(this.state.errors)
         const produto = {
             nome : this.state.nome,
             sku: this.state.sku,
@@ -62,9 +68,6 @@ class CadastroProduto extends React.Component {
             fornecedor:this.state.fornecedor
             }
 
-
-        this.service.validar(produto)
-    
         let nomeCampo = event.target.name;
         let valor = event.target.value;
 
@@ -85,15 +88,31 @@ class CadastroProduto extends React.Component {
 
 
                 <div className="row">
-                    { this.state.sucesso ? 
+
+                { this.state.sucesso && 
                         <div className="col-md-12">
                             <div className="alert alert-dismissible alert-success">
                                 <button type="button" className="close" data-dismiss="alert">&times;</button>
                                 <strong>Parabéns!</strong> Cadastro Realizado com sucesso.
                             </div>
                         </div>
-                        : ""
                     }
+
+
+                    { this.state.errors.length > 0 && 
+                        this.state.errors.map( msg => {
+                            return(
+                                <div className="col-md-12">
+                                    <div className="alert alert-dismissible alert-danger">
+                                        <button type="button" className="close" data-dismiss="alert">&times;</button>
+                                            <strong>Erro!</strong> {msg}}.
+                                        </div>
+                                    </div>
+                            )
+                            }) 
+                    }
+               
+               
                     <div className="col-md-6">
                         <div className="form-group">
                             <label> Nome:*</label>
