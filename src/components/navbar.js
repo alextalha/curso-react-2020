@@ -19,7 +19,7 @@ function NavBar(){
         <a className="nav-link" href="#/cadastro-produto">Cadastro</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#/consulta-produto">Consulta</a>
+        <a className="nav-link" href="#/listar-produto">Consulta</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#/sobre">About</a>
