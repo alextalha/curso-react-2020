@@ -58,16 +58,6 @@ class CadastroProduto extends React.Component {
 
     onChange = (event) =>{
 
-
-        console.log(this.state.errors)
-        const produto = {
-            nome : this.state.nome,
-            sku: this.state.sku,
-            descricao : this.state.descricao,
-            preco: this.state.preco,
-            fornecedor:this.state.fornecedor
-            }
-
         let nomeCampo = event.target.name;
         let valor = event.target.value;
 

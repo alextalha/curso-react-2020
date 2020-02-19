@@ -50,5 +50,13 @@ export default class ProdutoService {
         produtos.push(produto)
         localStorage.setItem(PRODUTO,JSON.stringify(produtos))
     }
+
+
+    listar = () => {
+
+        let produtos = localStorage.getItem(PRODUTO)
+
+        return JSON.parse(produtos)
+    }
     
     }
